@@ -33,7 +33,7 @@ include_recipe 'python::pip'
   end
 
   execute "pip install #{package} --upgrade" do
-    command "pip install #{package} --upgrade"
+    command "pip install ./#{package} --upgrade"
     cwd "#{node['devstack']['dest']}"
   end
 
