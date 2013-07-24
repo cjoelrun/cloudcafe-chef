@@ -20,7 +20,7 @@
 include_recipe 'git'
 include_recipe 'python::pip'
 
-cookbook_file "#{node['devstack']['dest']}/pip-requires" do
+cookbook_file "#{node['cloudcafe']['dest']}/pip-requires" do
   source "pip-requires"
   mode 0755
   owner "root"
@@ -29,7 +29,7 @@ end
 
 execute "pip install pip-requires" do
   command "pip install -r ./pip-requires"
-  cwd "#{node['devstack']['dest']}"
+  cwd "#{node['cloudcafe']['dest']}"
 end
 
 %w{ opencafe cloudcafe cloudroast }.each do |package|
@@ -41,7 +41,7 @@ end
 
   execute "pip install #{package} --upgrade" do
     command "pip install ./#{package} --upgrade"
-    cwd "#{node['devstack']['dest']}"
+    cwd "#{node['cloudcafe']['dest']}"
   end
 
 end
