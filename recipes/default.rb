@@ -20,6 +20,14 @@
 include_recipe 'git'
 include_recipe 'python::pip'
 
+directory node['cloudcafe']['dest'] do
+  owner "root"
+  group "root"
+  mode 0755
+  action :create
+  recursive true
+end
+
 cookbook_file "#{node['cloudcafe']['dest']}/pip-requires" do
   source "pip-requires"
   mode 0755
